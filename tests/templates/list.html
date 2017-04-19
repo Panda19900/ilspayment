@@ -1,0 +1,21 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% for test in tests %}
+<div class="media">
+  <a href="/tests/{{test.id}}" class="btn btn-primary btn-sm">
+    <div class="media-body">
+      <h4>{{test.productname}}</h4>
+    </div>
+  </a>
+</div>
+{% else %}
+<p>No Tests found</p>
+{% endfor %}
+
+
+{% endblock %}

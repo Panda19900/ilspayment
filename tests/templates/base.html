@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LIMS client system</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  </head>
+  
+  <body>
+    
+        <nav class="navbar navbar-default">
+  			<div class="container">
+    			<div class="navbar-header">
+      			<a class="navbar-brand" href="/tests">LIMS</a>
+    			</div>
+    			<ul class="nav navbar-nav">
+      			<li class="active"><a href="/tests">Home</a></li>
+      			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Functions <span class="caret"></span></a>
+        			<ul class="dropdown-menu">
+          				<li><a href="/tests/add">Add New Test</a></li>
+      				<li><a href="/tests/all">Tests</a></li>
+        			</ul>
+      			</li>
+    			</ul>
+     			{# [START profile] #}
+				<ul class="nav navbar-nav navbar-right">
+				{% if session.profile %}
+					<li><a><span class="glyphicon glyphicon-user"></span> Sign In:{{session.profile.displayName}}</a></li>
+					<li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+				{% else %}
+      				<li><a href="/oauth2authorize"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				{% endif %}
+				</ul>
+				{# [END profile] #}
+  			</div>
+		</nav>
+      
+      </div>
+    </div>
+    
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{action}} Test</h3>
+{% if session.profile %}
+<form method="POST" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="productname">Product Name</label>
+    <input type="text" name="productname" id="productname" value="{{test.productname}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="test1">Test 1</label>
+    <input type="text" name="test1" id="test1" value="{{test.test1}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="test2">Test 2</label>
+    <input type="text" name="test2" id="test2" value="{{test.test2}}" class="form-control"/>
+  </div>
+  
+  <div class="form-group">
+    <label for="test3">Test 3</label>
+    <input type="text" name="test3" id="test3" value="{{test.test3}}" class="form-control"/>
+  </div>
+  
+  <div class="form-group">
+    <label for="test4">Test 4</label>
+    <input type="text" name="test4" id="test4" value="{{test.test4}}" class="form-control"/>
+  </div>
+  
+  <div class="form-group hidden">
+    <label for="owner">Owner</label>
+    <input type="text" name="owner" id="owner" value="{{test.owner}}" class="form-control"/>
+  </div>
+
+  <div class="form-group hidden">
+    <label for="owner_id">owner_id</label>
+    <input type="text" name="owner_id" id="owner_id" value="{{test.owner_id}}" class="form-control"/>
+  </div>
+  
+   <div class="form-group hidden">
+    <label for="price">Price</label>
+    <input type="text" name="price" id="price" value="{{test.price}}" class="form-control"/>
+  </div>
+
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% else %}
+  <label>You are not login!</label></br>
+  <label>Please login</label>
+{% endif %}
+
+{% endblock %}

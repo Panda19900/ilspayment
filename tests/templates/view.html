@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Tests</h3>
+{% if test.price %}	
+<label>All tests for this product are finished.</label></br>
+<label>Pay Now to get the results</label>
+{% else %}
+<div class="btn-group">
+  <a href="/tests/edit/{{test.id}}" class="btn btn-primary btn-sm">
+    <i class="glyphicon glyphicon-edit"></i>
+    Edit Test
+  </a>
+  
+  <a href="/tests/delete/{{test.id}}" class="btn btn-danger btn-sm">
+    <i class="glyphicon glyphicon-trash"></i>
+    Delete Test
+  </a>
+</div>
+{% endif %}
+<div class="media">
+
+  <div class="media-body">
+    <h4 class="product-name">
+      {{test.productname}}
+    </h4>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Test #</th>
+    <th>Test Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  	<td><h5>Test 1</h5> </td>
+  	<td><h5>{{test.test1|default('N/A', True)}}</h5></td>
+  </tr>
+  <tr>
+  	<td><h5>Test 2</h5> </td>
+  	<td><h5>{{test.test2|default('N/A', True)}}</h5></td>
+  </tr>
+  <tr>
+  	<td><h5>Test 3</h5> </td>
+  	<td><h5>{{test.test3|default('N/A', True)}}</h5></td>
+  </tr>
+  <tr>
+  	<td><h5>Test 4</h5> </td>
+  	<td><h5>{{test.test4|default('N/A', True)}}</h5></td>
+  </tr>
+  </tbody>
+</table>  
+<h5 class="price-input">Total Price: {{test.price|default('N/A', True)}}$ CAD</h5>
+    <!--
+    <h5 class="test-input1">Test 1: {{test.test1|default('N/A', True)}}</h5>
+ 	<h5 class="test-input2">Test 2: {{test.test2|default('N/A', True)}}</h5>
+ 	<h5 class="test-input3">Test 3: {{test.test3|default('N/A', True)}}</h5>
+ 	<h5 class="test-input4">Test 4: {{test.test4|default('N/A', True)}}</h5>
+ 	<h5 class="price-input">Price: {{test.price|default('N/A', True)}}</h5>
+ 	-->
+ 	{% if test.price %}	
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+		<input type="hidden" name="cmd" value="_xclick">
+		<input type="hidden" name="business" value="sfzgfmx20a@gmail.com">
+		<input type="hidden" name="currency_code" value="CAD">
+		<input type="hidden" name="item_name" value="{{test.productname}}">
+		<input type="hidden" name="amount" value="{{test.price}}">
+		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form>
+	{% endif %}
+  </div>
+</div>
+
+{% endblock %}

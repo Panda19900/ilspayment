@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h3>
+	{% if session.profile %}
+         <label>Welcome</label>
+         <label>{{session.profile.displayName}}</label>
+         <h2>Guide to the system:</h2></br>
+         <ul>
+         	<li>This system only accept 4 tests per product at the moment</li>
+         	<li>The buy now button only show for tests that are completed and has a price.</li>
+         </ul>
+          
+        {% else %}
+        <label>You are not login!</label></br>
+        <label>Please login</label>
+        {% endif %}
+    </h3>
+{% endblock %}
