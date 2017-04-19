@@ -1,4 +1,4 @@
-from tests import get_model, oauth2, storage
+from tests import get_model, oauth2
 from flask import Blueprint, current_app, redirect, render_template, request, \
     session, url_for
 
